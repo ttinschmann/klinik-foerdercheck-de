@@ -71,6 +71,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.chip input:focus-vis
 .fk:hover strong,.fk:focus-visible strong{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:2px}
 .fk.r{text-align:right;align-items:flex-end}
 .fk.c{text-align:center;align-items:center;max-width:300px}
+.fk .pin{position:absolute;left:-28px;top:50%;margin-top:-6px;width:12px;height:12px;border-radius:50%;background:var(--alarm);box-shadow:0 0 0 2px rgba(10,13,26,.9)}
+.fk .pin::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2.5px solid var(--alarm);animation:pin 1.8s ease-out infinite}
+#fkB .pin::after{animation-delay:.9s}
+.fk.r .pin{left:auto;right:-28px}
+.fk.c .pin{left:50%;top:auto;margin:0 0 0 -6px}
+#fkA.c .pin{bottom:-24px}
+#fkB.c .pin{top:-24px}
+@keyframes pin{0%{transform:scale(1);opacity:1}85%,100%{transform:scale(3.4);opacity:0}}
 .other{display:none;font-size:14px;line-height:1.4;color:var(--muted);text-underline-offset:3px}
 #app.atfork .other{display:block}
 .bottom{position:absolute;left:0;right:0;bottom:0;padding:44px 16px 14px;background:linear-gradient(to top,rgba(6,7,13,.94),rgba(6,7,13,.80) 62%,rgba(6,7,13,0));display:flex;flex-direction:column;gap:8px}
@@ -161,7 +169,7 @@ footer ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
 footer h2{margin:0;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#f6eee6}
 footer .row{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;border-top:1px solid rgba(246,238,230,.15);padding-top:14px}
 @media (max-width:860px){.three,.faq,.path{grid-template-columns:1fr}.sec{padding:52px 16px}}
-@media (prefers-reduced-motion:reduce){.site,.hint,.sum li{transition:none}}
+@media (prefers-reduced-motion:reduce){.site,.hint,.sum li{transition:none}.fk .pin::after{animation:none;transform:scale(1.9);opacity:.6}}
 </style>
 </head>
 <body>
@@ -187,8 +195,8 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betwe
   <div id="veil"><h1><em>1,8 Milliarden Euro</em> für Cybersicherheit. Was davon kommt in Ihrem Haus an?</h1></div>
   <div class="big" id="big" aria-hidden="true"><strong>1,8 Mrd. €</strong><span>Sofortprogramm Cybersicherheit · geplant bis 2029</span></div>
   <div class="tag" id="you" aria-hidden="true"><b>Ihr Haus</b><i></i></div>
-  <a class="fk" id="fkA" href="abfrage/index.html"><strong>Um welche Größenordnung geht es?</strong><span>Zur Abfrage für Ihr Haus</span></a>
-  <a class="fk" id="fkB" href="#wmc"><strong>Wie kommen Sie dahin?</strong><span>So arbeitet WMC mit Ihnen</span></a>
+  <a class="fk" id="fkA" href="abfrage/index.html"><i class="pin" aria-hidden="true"></i><strong>Um welche Größenordnung geht es?</strong><span>Zur Abfrage für Ihr Haus</span></a>
+  <a class="fk" id="fkB" href="#wmc"><i class="pin" aria-hidden="true"></i><strong>Wie kommen Sie dahin?</strong><span>So arbeitet WMC mit Ihnen</span></a>
   <div class="bottom">
     <div class="inner">
       <div class="hint" id="hint">Scrollen Sie durch die Karte, oder tippen Sie auf „Abspielen“.</div>
@@ -405,13 +413,13 @@ function draw(now){
     if(fF>0){
       // Gabelung: zwei Linien vom Punkt zu den beiden Fragen
       ctx.lineWidth=1.5;ctx.strokeStyle='rgba(255,138,43,'+(.95*fF)+')';ctx.beginPath();
-      if(mob){var l=46*fF;ctx.moveTo(X,Y-yr-10);ctx.lineTo(X,Y-yr-10-l);ctx.moveTo(X,Y+yr+10);ctx.lineTo(X,Y+yr+10+l);
-        fa.style.transform='translate('+X+'px,'+(Y-yr-66)+'px) translate(-50%,-100%)';fb.style.transform='translate('+X+'px,'+(Y+yr+66)+'px) translate(-50%,0)';fa.style.maxWidth=fb.style.maxWidth=''}
+      if(mob){var l=38*fF;ctx.moveTo(X,Y-yr-10);ctx.lineTo(X,Y-yr-10-l);ctx.moveTo(X,Y+yr+10);ctx.lineTo(X,Y+yr+10+l);
+        fa.style.transform='translate('+X+'px,'+(Y-yr-74)+'px) translate(-50%,-100%)';fb.style.transform='translate('+X+'px,'+(Y+yr+74)+'px) translate(-50%,0)';fa.style.maxWidth=fb.style.maxWidth=''}
       else{var dx=150,dy=78,q=(yr+12)/Math.hypot(dx,dy),e=q+(1-q)*fF;
-        ctx.moveTo(X-dx*q,Y-dy*q);ctx.lineTo(X-dx*e,Y-dy*e);if(fF>.98)ctx.lineTo(X-dx-24,Y-dy);
-        ctx.moveTo(X+dx*q,Y+dy*q);ctx.lineTo(X+dx*e,Y+dy*e);if(fF>.98)ctx.lineTo(X+dx+24,Y+dy);
-        fa.style.transform='translate('+(X-dx-36)+'px,'+(Y-dy)+'px) translate(-100%,-50%)';fb.style.transform='translate('+(X+dx+36)+'px,'+(Y+dy)+'px) translate(0,-50%)';
-        fa.style.maxWidth=fb.style.maxWidth=Math.max(160,Math.min(300,X-dx-52))+'px'}
+        ctx.moveTo(X-dx*q,Y-dy*q);ctx.lineTo(X-dx*e,Y-dy*e);if(fF>.98)ctx.lineTo(X-dx-21,Y-dy);
+        ctx.moveTo(X+dx*q,Y+dy*q);ctx.lineTo(X+dx*e,Y+dy*e);if(fF>.98)ctx.lineTo(X+dx+21,Y+dy);
+        fa.style.transform='translate('+(X-dx-52)+'px,'+(Y-dy)+'px) translate(-100%,-50%)';fb.style.transform='translate('+(X+dx+52)+'px,'+(Y+dy)+'px) translate(0,-50%)';
+        fa.style.maxWidth=fb.style.maxWidth=Math.max(160,Math.min(300,X-dx-68))+'px'}
       ctx.stroke();
     }
   }else you.style.opacity='0';
