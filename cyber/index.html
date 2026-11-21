@@ -28,7 +28,7 @@ button{font-family:inherit}
 
 /* ---------- Kopf ---------- */
 .site{position:fixed;top:0;left:0;right:0;z-index:20;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 16px;color:#f6eee6;background:linear-gradient(rgba(6,7,13,.8),rgba(6,7,13,0));transition:background .3s,color .3s}
-.site.solid{background:rgba(247,245,243,.95);color:var(--ink);border-bottom:1px solid var(--line2)}
+.site.solid{background:var(--bg);color:var(--ink);border-bottom:1px solid var(--line2)}
 .site .brand{font:600 16px var(--sans);letter-spacing:-.01em;text-decoration:none;white-space:nowrap}
 .site .brand span{font-weight:400;opacity:.75}
 .site nav{display:flex;gap:20px;align-items:center}
@@ -46,7 +46,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.chip input:focus-vis
 .sum{position:absolute;left:14px;top:92px;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px;pointer-events:none}
 .sum li{position:relative;font:500 12px var(--sans);padding:4px 10px 4px 26px;border-radius:14px;background:rgba(10,10,18,.74);border:1px solid rgba(246,238,230,.28);color:var(--text);opacity:0;transform:translateX(-8px);transition:opacity .4s,transform .4s;white-space:nowrap;align-self:flex-start}
 .sum li.on{opacity:1;transform:none}
-.sum li.gone{display:none}
 .sum li::before{content:"";position:absolute;left:9px;top:50%;width:8px;height:8px;border-radius:50%;transform:translateY(-50%);background:var(--text)}
 .sum li.s2::before{width:4px;height:4px;left:11px;background:var(--muted)}
 .sum li.s3::before{border-radius:0;background:none;border:1.5px solid var(--muted);width:7px;height:7px;transform:translateY(-50%) rotate(45deg)}
@@ -80,7 +79,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.chip input:focus-vis
 .kicker{font:500 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
 .cap{margin:0;font-size:17px;line-height:1.36;font-weight:500;min-height:4.1em;text-wrap:balance}
 .srcl{font:500 11px var(--mono);letter-spacing:.03em;color:var(--muted);min-height:1.3em}
-#app.atfork .cap,#app.atfork .srcl,#app.atfork .hint,#app.atfork .sum{display:none}
+#app.atfork .cap,#app.atfork .srcl,#app.atfork .hint{display:none}
 .ctrl{display:flex;gap:12px;align-items:flex-end}
 #play{flex:0 0 auto;height:44px;min-width:108px;padding:0 16px;border-radius:22px;border:1.5px solid var(--text);background:transparent;color:var(--text);font:500 14px var(--sans);cursor:pointer}
 .chap{flex:1;display:flex;gap:4px;min-width:0}
@@ -92,63 +91,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible,.chip input:focus-vis
 @media (max-width:700px){.top span:first-child{display:none}.top{justify-content:flex-end}.sum{top:84px}.sum li{font-size:11.5px;padding:3px 9px 3px 24px}.chap button span{display:none}.chap button{text-align:center}.chap button b{margin:0}}
 @media (min-width:800px){.cap{font-size:20px}.sum{left:16px;top:98px}.sum li{font-size:13px}}
 
-/* ---------- Abfrage: helle Farbwelt wie klinikleitstand.de ---------- */
-#abfrage{position:relative;z-index:2;background:var(--bg);color:var(--ink)}
-.haus{position:sticky;top:64px;z-index:3;height:0;display:flex;justify-content:flex-end;padding:0 7vw;pointer-events:none}
-.haus div{display:flex;align-items:center;gap:10px;height:48px;transform:translateY(10px)}
-.haus svg{width:46px;height:46px;flex:0 0 auto}
-.haus .rt{fill:none;stroke:var(--line2);stroke-width:3}
-.haus .rp{fill:none;stroke:var(--accent2);stroke-width:3;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;transform:rotate(-90deg);transform-origin:50% 50%;transition:stroke-dashoffset .4s}
-.haus .rd{fill:var(--accent2)}
-.haus b{font:500 12px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink);background:#fff;border:1px solid var(--accent2);padding:4px 9px;border-radius:3px;white-space:nowrap}
-.qsec{min-height:88vh;min-height:88svh;display:flex;flex-direction:column;justify-content:center;gap:18px;padding:110px 7vw 56px;max-width:1080px;margin:0 auto}
-.qsec + .qsec{border-top:1px solid var(--line2)}
-.qsec > *{max-width:700px}
-.qsec[hidden]{display:none}
-.qsec .kicker{color:var(--accent2)}
-.qsec h2{margin:0;font-size:clamp(28px,4.6vw,48px);line-height:1.1;font-weight:600;letter-spacing:-.015em;text-wrap:balance}
-.qsec .help{margin:0;color:var(--muted2);font-size:17px;max-width:32em}
-.qsec .qhint{margin:18px 0 0;font:500 13px var(--sans);color:var(--muted2)}
-.scale{display:flex;gap:6px;margin-top:22px;width:100%}
-.scale button{flex:1;min-width:0;position:relative;background:none;border:0;border-top:3px solid var(--line2);color:var(--muted2);font:500 16px/1.25 var(--sans);text-align:left;padding:14px 6px 10px 0;min-height:66px;cursor:pointer;transition:color .15s,border-color .15s}
-.scale button::before{content:"";position:absolute;left:0;top:-9px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid #b9a79b}
-.scale button:hover{color:var(--ink);border-top-color:var(--ink)}
-.scale button[aria-checked="true"]{color:var(--ink);font-weight:600;border-top-color:var(--accent2)}
-.scale button[aria-checked="true"]::before{background:var(--accent2);border-color:var(--accent2);box-shadow:0 0 0 4px rgba(213,93,5,.2)}
-.words{display:flex;flex-wrap:wrap;gap:6px 48px;margin-top:8px;align-items:baseline}
-.words button{background:none;border:0;border-bottom:4px solid transparent;padding:2px 0 4px;color:#b9a79b;font:600 clamp(36px,6vw,68px)/1.05 var(--sans);letter-spacing:-.02em;cursor:pointer;transition:color .15s}
-.words.long button{font-size:clamp(28px,4.4vw,50px)}
-.words button:hover{color:var(--ink)}
-.words button[aria-checked="true"]{color:var(--accent2);border-bottom-color:var(--accent2)}
-.rsec{gap:20px;min-height:0;padding-bottom:84px}
-.rsec > *{max-width:860px}
-.qsec h2.bigv{font-size:clamp(38px,7vw,92px);line-height:1;letter-spacing:-.03em}
-.qsec h2.bigv.txt{font-size:clamp(30px,5vw,60px);letter-spacing:-.02em;line-height:1.06}
-.pillm{align-self:flex-start;font:500 13px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent2);background:#fff;border:1px solid var(--accent2);padding:6px 12px;border-radius:4px}
-.barw{max-width:520px;width:100%;display:flex;flex-direction:column;gap:6px}
-.bar{position:relative;height:30px}
-.bar .tr{position:absolute;left:0;right:0;top:9px;height:12px;border-radius:6px;background:#efe7e1;border:1px solid var(--line2)}
-.bar .zone{position:absolute;top:5px;height:20px;width:34%;border-radius:10px;background:var(--accent2)}
-.barl{display:flex;justify-content:space-between;font:500 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted2)}
-.rsec .lead{margin:0;font-size:clamp(17px,2vw,20px);line-height:1.45;color:var(--ink2);max-width:36em}
-.cols{display:grid;grid-template-columns:1fr 1.25fr;gap:28px;margin-top:10px}
-.cols > div{border-top:2px solid var(--ink);padding-top:14px;display:flex;flex-direction:column;gap:8px}
-.cols h3{margin:0;font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent2)}
-.cols strong{font-size:22px;line-height:1.2;font-weight:600}
-.cols p{margin:0;font-size:16px;color:var(--ink2)}
-.cols ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:16px;line-height:1.4;color:var(--ink2)}
+/* ---------- Verweise ---------- */
 .acts{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-top:6px}
 .acts .btn{align-self:auto}
 .lnk{background:none;border:0;color:var(--muted2);font:500 15px var(--sans);cursor:pointer;padding:10px 0;text-decoration:underline;text-underline-offset:3px}
-.fine{margin:0;font-size:13.5px;line-height:1.5;color:var(--muted2);max-width:62em}
-@media (max-width:760px){
-  .haus{top:56px;padding:0 14px}.haus b{display:none}.haus svg{width:38px;height:38px}
-  .qsec{padding:104px 18px 48px;min-height:80vh}
-  .qsec h2.bigv{font-size:clamp(40px,11.5vw,60px)}
-  .qsec h2.bigv.txt{font-size:clamp(30px,8vw,44px)}
-  .cols{grid-template-columns:1fr;gap:20px}
-  .scale button{font-size:14px}
-}
 
 /* ---------- Vorgehen ---------- */
 figure{margin:0}
@@ -222,7 +168,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betwe
 <header class="site" id="site">
   <a class="brand" href="../index.html">Klinik-Fördercheck<span> · Sofortprogramm Cybersicherheit</span></a>
   <nav aria-label="Seite">
-    <a href="#karte">Karte</a><a href="#abfrage">Ihr Haus</a><a href="#wmc">Vorgehen</a><a href="#fragen">Fragen</a>
+    <a href="#karte">Karte</a><a href="abfrage/index.html">Abfrage</a><a href="#wmc">Vorgehen</a><a href="#fragen">Fragen</a>
     <a class="cta" href="#kontakt">Gespräch</a>
   </nav>
 </header>
@@ -241,7 +187,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betwe
   <div id="veil"><h1><em>1,8 Milliarden Euro</em> für Cybersicherheit. Was davon kommt in Ihrem Haus an?</h1></div>
   <div class="big" id="big" aria-hidden="true"><strong>1,8 Mrd. €</strong><span>Sofortprogramm Cybersicherheit · geplant bis 2029</span></div>
   <div class="tag" id="you" aria-hidden="true"><b>Ihr Haus</b><i></i></div>
-  <a class="fk" id="fkA" href="#abfrage" data-type="kh"><strong>Um welche Größenordnung geht es?</strong><span>Zur Abfrage für Ihr Haus</span></a>
+  <a class="fk" id="fkA" href="abfrage/index.html"><strong>Um welche Größenordnung geht es?</strong><span>Zur Abfrage für Ihr Haus</span></a>
   <a class="fk" id="fkB" href="#wmc"><strong>Wie kommen Sie dahin?</strong><span>So arbeitet WMC mit Ihnen</span></a>
   <div class="bottom">
     <div class="inner">
@@ -249,7 +195,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betwe
       <div class="kicker" id="kicker"></div>
       <p class="cap" id="cap" aria-live="polite"></p>
       <div class="srcl" id="srcl"></div>
-      <a class="other" href="#abfrage" data-type="an">Sie leiten ein MVZ, ein Labor, eine Radiologie, einen Großhandel oder einen Blutdienst? Hier geht es zu Ihrer Abfrage.</a>
+      <a class="other" href="abfrage/index.html#an">Sie leiten ein MVZ, ein Labor, eine Radiologie, einen Großhandel oder einen Blutdienst? Hier geht es zu Ihrer Abfrage.</a>
       <div class="ctrl">
         <button id="play" type="button">Abspielen</button>
         <nav class="chap" id="chap" aria-label="Schritte der Karte"></nav>
@@ -257,11 +203,6 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betwe
     </div>
   </div>
 </div>
-</section>
-
-<section id="abfrage" aria-label="Abfrage: Um welche Größenordnung geht es für Ihr Haus?">
-  <div class="haus" aria-hidden="true"><div><b id="youl2">Ihr Haus</b><svg viewBox="0 0 44 44"><circle class="rt" cx="22" cy="22" r="17" pathLength="100"/><circle class="rp" id="ringp" cx="22" cy="22" r="17" pathLength="100"/><circle class="rd" cx="22" cy="22" r="8"/></svg></div></div>
-  <div id="flow"></div>
 </section>
 
 <main>
@@ -312,7 +253,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-betwe
     <div><h3>Für Träger mit mehreren Häusern</h3><p>Dieselbe Methode über alle Standorte, mit gemeinsamen Prioritäten und gemeinsamer Beschaffung.</p></div>
   </div>
   <p class="note">WMC war am Gutachten für das BMG zu diesem Programm beteiligt. Auf Bewilligungen hat WMC keinen Einfluss und gibt keine Zusagen.</p>
-  <a class="btn" href="#kontakt">Lassen Sie uns reden!</a>
+  <div class="acts"><a class="btn" href="#kontakt">Lassen Sie uns reden!</a><a class="lnk" href="abfrage/index.html">Um welche Größenordnung geht es für Ihr Haus?</a></div>
 </section>
 
 <section class="sec" id="fragen">
@@ -407,7 +348,7 @@ function draw(now){
   var t=now/1000;
   var fH=ease(seg(.025,.095)),fS=ease(seg(.09,.13)),fT=ease(seg(.125,.155));
   var fA=ease(seg(.175,.26)),fL=ease(seg(.345,.43)),fP=ease(seg(.505,.56)),fPo=ease(seg(.64,.68));
-  var fZ=ease(seg(.68,.79)),fF=ease(seg(.845,.895));
+  var fZ=ease(seg(.68,.79)),fF=ease(seg(.845,.895)),fLg=cw<=720?ease(seg(.68,.73)):ease(seg(.80,.845));
   var fBig=fP*(1-fPo),aInt=1-.45*fL-.25*fP,dim=(1-.62*fZ)*(1-.5*fBig);
   // Kamera: Zoom auf "Ihr Haus"
   var yi=M.you,yx=M.hosp[2*yi]/10,yy=M.hosp[2*yi+1]/10;
@@ -480,7 +421,7 @@ function draw(now){
   $('big').style.opacity=String(fBig);
   app.classList.toggle('atfork',fF>.25);
   $('hint').style.opacity=p<.015?'1':'0';
-  $('l1').classList.toggle('on',fH>0&&fZ<.5);$('l2').classList.toggle('on',fS>0&&p<.333);$('l3').classList.toggle('on',fT>0&&p<.333);$('l4').classList.toggle('on',fA>0&&fZ<.5);$('l5').classList.toggle('on',fL>0&&fZ<.5);$('l2').classList.toggle('gone',p>=.333);$('l3').classList.toggle('gone',p>=.333);
+  $('l1').classList.toggle('on',fH>0);$('l2').classList.toggle('on',fS>0);$('l3').classList.toggle('on',fT>0);$('l4').classList.toggle('on',fA>0);$('l5').classList.toggle('on',fL>0);$('sum').style.opacity=String(1-fLg);
   setChapter(Math.min(5,Math.floor(p*6)));
 }
 var raf=0,visible=true;
@@ -489,7 +430,7 @@ function kick(){if(!raf)raf=requestAnimationFrame(loop)}
 function onScroll(){
   var r=tourRange();p=clamp((window.scrollY-r[0])/r[1],0,1);
   visible=window.scrollY<r[0]+tour.offsetHeight;
-  $('site').classList.toggle('solid',window.scrollY>document.getElementById('abfrage').offsetTop-60);
+  $('site').classList.toggle('solid',window.scrollY>document.querySelector('main').offsetTop-60);
   kick();
 }
 window.addEventListener('scroll',onScroll,{passive:true});
@@ -515,154 +456,8 @@ document.addEventListener('click',function(ev){
 });
 
 size();onScroll();
+if(location.hash==='#haus'){toP(.94,true);onScroll()}
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){size();onScroll()});
-})();
-</script>
-<script>
-(function(){
-"use strict";
-var M=CYMAP;
-var $=function(id){return document.getElementById(id)};
-var RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-var nf=new Intl.NumberFormat('de-DE');
-/* ---------- Fragen ---------- */
-var JN=[['ja','Ja'],['nein','Nein']];
-var QKH=[
- {k:'betten',g:'Größe',t:'Wie viele Betten hat Ihr Haus?',ty:'scale',o:[['a','1 bis 199'],['b','200 bis 399'],['c','400 bis 599'],['d','ab 600']]},
- {k:'besch',g:'Größe',t:'Hat Ihr Haus mehr als 250 Beschäftigte?',ty:'words',o:JN,when:function(A){return A.betten==='a'}},
- {k:'faelle',g:'Größe',t:'Behandeln Sie mehr als 30.000 vollstationäre Fälle im Jahr?',ty:'words',o:JN,when:function(A){return A.betten==='d'}},
- {k:'reg',g:'Stand',t:'Ist Ihr Haus beim BSI registriert?',h:'Das Bundesamt für Sicherheit in der Informationstechnik führt das Register der betroffenen Einrichtungen.',ty:'words',o:JN},
- {k:'isms',g:'Stand',t:'Gibt es ein Informationssicherheits-Management mit einer verantwortlichen Person?',ty:'scale',o:[['ja','Ja'],['teil','Im Aufbau'],['nein','Nein']]},
- {k:'b3s',g:'Stand',t:'Wann wurde Ihr Haus zuletzt nach dem Branchenstandard B3S geprüft?',h:'Der B3S ist der vom BSI anerkannte Sicherheitsstandard für Krankenhäuser.',ty:'scale',o:[['neu','In den letzten zwei Jahren'],['alt','Länger her'],['nie','Noch nie']]},
- {k:'not',g:'Stand',t:'Haben Sie den Notbetrieb bei IT-Ausfall in den letzten zwölf Monaten geübt?',ty:'words',o:JN},
- {k:'khzg',g:'Stand',t:'Hat Ihr Haus ein eigenes Vorhaben zur Informationssicherheit über den Krankenhauszukunftsfonds gefördert bekommen?',h:'Gemeint ist der Fördertatbestand 10 des Krankenhauszukunftsgesetzes.',ty:'words',o:JN},
- {k:'verbund',g:'Struktur',t:'Ist Ihr Haus ein Einzelhaus oder Teil eines Verbunds?',ty:'words',long:true,o:[['einzel','Einzelhaus'],['verbund','Verbund']]},
- {k:'it',g:'Struktur',t:'Wo liegt Ihre IT?',ty:'words',long:true,o:[['haus','Im Haus'],['traeger','Beim Träger']]}
-];
-var QAN=[
- {k:'besch',g:'Größe',t:'Wie viele Beschäftigte hat Ihre Einrichtung?',ty:'scale',o:[['lt50','Unter 50'],['50','50 bis 249'],['250','Ab 250']]},
- {k:'umsatz',g:'Größe',t:'Wie hoch ist der Jahresumsatz?',ty:'scale',o:[['lt10','Bis 10 Mio. Euro'],['10','Über 10 bis 50 Mio. Euro'],['50','Über 50 Mio. Euro']]}
-];
-// DKG/Goldmedia 2023, gewichtete Werte je Bettengrößenklasse in TEUR: [Median, Mittelwert]
-var DKG={a:{l:'mit 1 bis 199 Betten',s:'1 bis 199 Betten',i:[171.0,456.5],r:[86.1,188.3]},b:{l:'mit 200 bis 399 Betten',s:'200 bis 399 Betten',i:[532.0,694.2],r:[292.0,362.6]},c:{l:'mit 400 bis 599 Betten',s:'400 bis 599 Betten',i:[1001.3,1049.2],r:[530.0,547.2]},d:{l:'ab 600 Betten',s:'ab 600 Betten',i:[732.0,1021.8],r:[375.0,530.9]}};
-var type=null,A={};
-function qlist(){return type==='kh'?QKH:QAN}
-function vis(){return qlist().filter(function(q){return !q.when||q.when(A)})}
-function answered(){return vis().filter(function(q){return A[q.k]}).length}
-
-function eur(v){var t=Math.round(v/10)*10;return t>=1000?{m:true,s:(t/1000).toFixed(2).replace('.',',')}:{m:false,s:nf.format(t*1000)}}
-function span(a){var x=eur(a[0]),y=eur(a[1]);
-  if(x.m&&y.m)return x.s+' bis '+y.s+' Mio. €';
-  if(!x.m&&!y.m)return x.s+' bis '+y.s+' €';
-  return x.s+' € bis '+y.s+' Mio. €'}
-function betroffenKH(st){
-  var bw='Besonders wichtige Einrichtung';
-  if(!st.betten)return {v:'Noch offen',p:'Mit der Bettenzahl ordnen wir Ihr Haus nach dem BSI-Gesetz ein.'};
-  if(st.betten==='a'){
-    if(st.besch==='ja')return {v:bw,p:'Ab 250 Beschäftigten gilt ein Krankenhaus als besonders wichtige Einrichtung.'};
-    if(st.besch==='nein')return {v:'Wichtige Einrichtung',p:'Unter 250 Beschäftigten gilt ein Krankenhaus als wichtige Einrichtung, sofern es mindestens 50 Beschäftigte hat.'};
-    return {v:'Wichtige oder besonders wichtige Einrichtung',p:'Ab 250 Beschäftigten ist ein Krankenhaus besonders wichtig, darunter wichtig.'};
-  }
-  var p='Ein Haus dieser Größe hat in aller Regel mehr als 250 Beschäftigte und gilt damit als besonders wichtige Einrichtung.';
-  if(st.faelle==='ja')p+=' Mit über 30.000 vollstationären Fällen im Jahr ist Ihr Haus außerdem eine kritische Anlage.';
-  return {v:bw,p:p};
-}
-function lage(st){
-  var pts=0,max=0;
-  if(st.isms){max+=2;pts+=st.isms==='ja'?2:st.isms==='teil'?1:0}
-  if(st.b3s){max+=2;pts+=st.b3s==='neu'?2:st.b3s==='alt'?1:0}
-  if(st.not){max+=1;pts+=st.not==='ja'?1:0}
-  if(st.khzg){max+=1;pts+=st.khzg==='ja'?1:0}
-  if(max<3)return null;
-  var q=pts/max;return q>=.67?0:q<=.34?2:1;
-}
-var ACTS='<div class="acts"><a class="btn" href="#kontakt">Lassen Sie uns reden!</a><a class="lnk" href="#wmc">Wie kommen Sie dahin?</a></div>';
-function resultKH(){
-  var st=A,h='',bt=betroffenKH(st);
-  if(st.betten){
-    var d=DKG[st.betten],lg=lage(st),txt=['Ihre Angaben zum Stand sprechen eher für das untere Ende der Spanne.','Ihre Angaben zum Stand sprechen für die Mitte der Spanne.','Ihre Angaben zum Stand sprechen eher für das obere Ende der Spanne.'];
-    h+='<div class="kicker">Größenordnung für ein Haus '+d.l+'</div>';
-    h+='<h2 class="bigv" id="rt">'+span(d.i)+'</h2>';
-    h+='<div class="pillm">einmalig · dazu '+span(d.r)+' pro Jahr</div>';
-    h+='<div class="barw"><div class="bar" role="img" aria-label="Spanne vom Median bis zum Mittelwert"><div class="tr"></div>'+(lg===null?'':'<div class="zone" style="left:'+[0,33,66][lg]+'%"></div>')+'</div><div class="barl"><span>Median</span><span>Mittelwert</span></div></div>';
-    h+='<p class="lead">'+(lg===null?'So viel müssen Häuser Ihrer Größe zusätzlich für IT-Sicherheit aufwenden.':txt[lg]+' Das ist eine Einschätzung von WMC.')+((st.it==='traeger'||st.verbund==='verbund')?' Bei zentraler IT im Verbund fällt ein Teil davon beim Träger an.':'')+'</p>';
-  }else{
-    h+='<div class="kicker">Größenordnung</div><h2 class="bigv txt" id="rt">Für die Spanne fehlt die Bettenzahl.</h2>';
-  }
-  var todo=[];
-  if(st.reg==='nein')todo.push('BSI-Registrierung prüfen und nachholen. Die Frist beträgt drei Monate ab Betroffenheit.');
-  if(st.isms&&st.isms!=='ja')todo.push('Informationssicherheits-Management aufbauen und eine verantwortliche Person benennen.');
-  if(st.b3s&&st.b3s!=='neu')todo.push('Ausgangsstand am Branchenstandard B3S dokumentieren.');
-  if(st.not==='nein')todo.push('Notbetrieb und Wiederanlauf mit Notaufnahme, OP und Labor üben.');
-  if(st.khzg==='ja')todo.push('Abgrenzen, was bereits über den Krankenhauszukunftsfonds finanziert ist.');
-  if(st.verbund==='verbund')todo.push('Prioritäten und Beschaffung über alle Häuser des Verbunds abstimmen.');
-  if(st.it==='traeger')todo.push('Mit dem Träger klären, wer Maßnahmen plant, bezahlt und nachweist.');
-  todo.push('Maßnahmen priorisieren und Folgekosten durchrechnen.','Schulung der Geschäftsleitung einplanen.','Förderfähige Maßnahmen erst beauftragen, wenn die Bedingungen feststehen.');
-  h+='<div class="cols"><div><h3>Betroffenheit</h3><strong>'+bt.v+'</strong><p>'+bt.p+'</p><p>§ 391 SGB V verpflichtet unabhängig davon jedes Krankenhaus zu angemessenen Vorkehrungen nach dem Stand der Technik.</p></div>';
-  h+='<div><h3>Vor der Richtlinie</h3><ul>'+todo.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div></div>';
-  h+=ACTS;
-  h+='<p class="fine">Die Spanne reicht vom Median bis zum Mittelwert der Häuser Ihrer Größe in der „Erhebung der Zusatzkosten zur Umsetzung des § 75c SGB V“ von Deutscher Krankenhausgesellschaft und Goldmedia (November 2023, 152 Häuser, erhoben vor der Umsetzung von NIS 2). Sie ist keine Aussage über eine Förderung: Wie die Mittel des Programms verteilt werden, ist nicht festgelegt. Zur Einordnung: Für alle Krankenhäuser zusammen nennt die Erhebung rund 1,49 Mrd. Euro einmalig, das Programm ist mit rund 1,8 Mrd. Euro für alle Einrichtungsarten geplant. Kein Rechtsrat. Ihre Angaben bleiben in Ihrem Browser, es wird nichts gespeichert oder übertragen.</p>';
-  return h;
-}
-function resultAN(){
-  var b=A.besch,u=A.umsatz,v,pp;
-  if(!b&&!u){v='Die Einordnung ist noch offen.';pp='Ohne Angaben zu Beschäftigten und Umsatz lässt sich die Größenschwelle nicht prüfen.'}
-  else if(b==='50'||b==='250'){v='Die Größenschwelle ist erreicht.';pp='Ab 50 Beschäftigten kann Ihre Einrichtung unter das BSI-Gesetz fallen.'}
-  else if(u==='10'||u==='50'){v='Die Größenschwelle ist voraussichtlich erreicht.';pp='Über 10 Mio. Euro Umsatz genügen, wenn auch die Bilanzsumme über 10 Mio. Euro liegt.'}
-  else if(b==='lt50'&&u==='lt10'){v='Ihre Einrichtung liegt unter der Größenschwelle.';pp='Nach Ihren Angaben greifen die Schwellen des BSI-Gesetzes nicht.'}
-  else{v='Die Einordnung ist noch nicht eindeutig.';pp='Es fehlt noch eine Angabe.'}
-  var h='<div class="kicker">MVZ, Labor, Radiologie, Großhandel, Blutversorgung</div>';
-  h+='<h2 class="bigv txt" id="rt">'+v+'</h2>';
-  h+='<p class="lead">'+pp+' Ob Ihre Einrichtungsart vom Gesetz erfasst ist, hängt von Ihrer Tätigkeit ab. Das klären wir im Gespräch.</p>';
-  h+='<div class="cols"><div><h3>Verfahren</h3><p>Für Einrichtungen außerhalb der Krankenhäuser ist nach Planungsstand ein Förderverfahren mit Antrag vorgesehen. Der endgültige Kreis der Berechtigten steht noch nicht fest.</p></div>';
-  h+='<div><h3>Größenordnung</h3><p>Eine öffentliche Kostenerhebung wie für Krankenhäuser gibt es für Ihre Einrichtungsart nicht. Eine Spanne in Euro nennen wir hier deshalb nicht.</p></div></div>';
-  h+=ACTS;
-  h+='<p class="fine">Quelle zum Verfahren: SVA System Vertrieb Alexander GmbH, Stand Oktober 2026 (Sekundärquelle). Kein Rechtsrat. Ihre Angaben bleiben in Ihrem Browser, es wird nichts gespeichert oder übertragen.</p>';
-  return h;
-}
-
-/* ---------- Ablauf ---------- */
-var flow=$('flow'),resEl=null;
-function build(){
-  [].slice.call(flow.querySelectorAll('.qsec')).forEach(function(e){e.remove()});
-  qlist().forEach(function(q){
-    var sec=document.createElement('section');sec.className='qsec';sec.dataset.k=q.k;
-    var h='<div class="kicker"></div><h2 id="t-'+q.k+'">'+q.t+'</h2>'+(q.h?'<p class="help">'+q.h+'</p>':'');
-    h+='<div class="'+(q.ty==='scale'?'scale':'words'+(q.long?' long':''))+'" role="radiogroup" aria-labelledby="t-'+q.k+'">';
-    q.o.forEach(function(o){h+='<button type="button" role="radio" aria-checked="false" data-v="'+o[0]+'">'+o[1]+'</button>'});
-    sec.innerHTML=h+'</div>'+(q===qlist()[0]?'<p class="qhint">Scrollen Sie durch die Fragen, oder tippen Sie auf eine Antwort.</p>':'');flow.appendChild(sec);
-  });
-  resEl=document.createElement('section');resEl.className='qsec rsec';resEl.id='ergebnis';resEl.setAttribute('aria-live','polite');flow.appendChild(resEl);
-  update();
-}
-function update(){
-  if(type==='kh'){if(A.betten!=='a')delete A.besch;if(A.betten!=='d')delete A.faelle}
-  var v=vis(),n=0;
-  qlist().forEach(function(q){
-    var sec=flow.querySelector('.qsec[data-k="'+q.k+'"]'),on=v.indexOf(q)>=0;
-    sec.hidden=!on;if(!on)return;n++;
-    sec.firstChild.textContent='Frage '+n+' von '+v.length+' · '+q.g;
-    [].forEach.call(sec.querySelectorAll('[role=radio]'),function(b){b.setAttribute('aria-checked',String(A[q.k]===b.dataset.v))});
-  });
-  resEl.innerHTML=type==='kh'?resultKH():resultAN();
-  kick();
-}
-flow.addEventListener('click',function(ev){
-  var b=ev.target.closest('[role=radio]');if(!b)return;
-  var sec=b.closest('.qsec');A[sec.dataset.k]=b.dataset.v;update();
-  var nx=sec.nextElementSibling;while(nx&&nx.hidden)nx=nx.nextElementSibling;
-  if(nx)setTimeout(function(){nx.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})},RM?0:380);
-});
-
-/* ---------- Fortschritt am Punkt „Ihr Haus“ ---------- */
-function kick(){
-  var fr=answered()/Math.max(1,vis().length);
-  $('ringp').style.strokeDashoffset=String(100-100*fr);
-  $('youl2').textContent=type!=='kh'?'Ihre Einrichtung':(A.betten?('Ihr Haus · '+DKG[A.betten].s):'Ihr Haus');
-}
-function setType(t){if(t===type)return;type=t;A={};build()}
-document.addEventListener('click',function(ev){var el=ev.target.closest&&ev.target.closest('a[data-type]');if(el)setType(el.dataset.type)},true);
-setType('kh');
 })();
 </script>
 </body>
